@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, Text, Pressable, ScrollView, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 
 const CATEGORIES = [
   { key: 'all', label: 'Tous' },
@@ -27,6 +28,7 @@ function formatPrice(value) {
 }
 
 export default function ShopScreen() {
+  const { t, colors } = useApp();
   const [category, setCategory] = useState('all');
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
@@ -80,11 +82,11 @@ export default function ShopScreen() {
   };
 
   return (
-    <View style={styles.shopRoot}>
+    <View style={[styles.shopRoot, { backgroundColor: colors.bg }]}>
       <View style={styles.dasheader}>
-        <Text style={styles.textpay}>Boutique</Text>
+        <Text style={[styles.textpay, { color: colors.primary }]}>{t('shopHeader')}</Text>
         <Pressable onPress={() => setShowCart(true)} style={styles.shopCartBtn}>
-          <Ionicons name="cart-outline" size={24} color="#1A72B6" />
+          <Ionicons name="cart-outline" size={24} color={colors.primary} />
           {cartCount > 0 && (
             <View style={styles.shopCartBadge}>
               <Text style={styles.shopCartBadgeText}>{cartCount}</Text>
@@ -96,14 +98,14 @@ export default function ShopScreen() {
       {showCart ? (
         <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
           <View style={styles.shopCartHeader}>
-            <Text style={styles.sectionTitle}>Mon panier</Text>
+            <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('cart')}</Text>
             <Pressable onPress={() => setShowCart(false)}>
-              <Text style={styles.shopBackLink}>← Continuer mes achats</Text>
+              <Text style={[styles.shopBackLink, { color: colors.primary }]}>{t('continueShopping')}</Text>
             </Pressable>
           </View>
 
           {cart.length === 0 ? (
-            <Text style={styles.payEmpty}>Votre panier est vide</Text>
+            <Text style={[styles.payEmpty, { color: colors.muted }]}>{t('emptyCart')}</Text>
           ) : (
             <>
               {cart.map((item) => (
@@ -131,12 +133,12 @@ export default function ShopScreen() {
               ))}
 
               <View style={styles.shopTotalRow}>
-                <Text style={styles.shopTotalLabel}>Total</Text>
-                <Text style={styles.shopTotalValue}>{formatPrice(cartTotal)} da</Text>
+                <Text style={[styles.shopTotalLabel, { color: colors.subtext }]}>{t('total')}</Text>
+                <Text style={[styles.shopTotalValue, { color: colors.text }]}>{formatPrice(cartTotal)} da</Text>
               </View>
 
               <Pressable onPress={checkout} style={styles.rcConfirmBtn}>
-                <Text style={styles.rcConfirmText}>Commander ({cartCount})</Text>
+                <Text style={styles.rcConfirmText}>{t('order')} ({cartCount})</Text>
               </Pressable>
             </>
           )}
@@ -169,7 +171,7 @@ export default function ShopScreen() {
                     <Text style={styles.shopCardPrice}>{formatPrice(p.price)} da</Text>
                     <Pressable onPress={() => addToCart(p)} style={styles.shopCardAddBtn}>
                       <Ionicons name="add" size={16} color="#fff" />
-                      <Text style={styles.shopCardAddText}>Ajouter</Text>
+                      <Text style={styles.shopCardAddText}>{t('add')}</Text>
                     </Pressable>
                   </View>
                 </View>

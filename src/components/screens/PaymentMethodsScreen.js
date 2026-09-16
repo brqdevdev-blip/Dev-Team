@@ -7,6 +7,7 @@ import ProfileCard from '../ui/ProfileCard';
 import OperatorButton from '../ui/OperatorButton';
 import BottomNav from '../dashboard/BottomNav';
 import { OPERATORS } from '../../data/operators';
+import { useApp } from '../../context/AppContext';
 
 const STORAGE_KEY = 'savedNumbers';
 
@@ -28,6 +29,7 @@ async function saveNumbers(numbers) {
 // Pressable operator card: drop shadow when idle, inner shadow when pressed.
 
 export default function PayementMethodsScreen({ user, onBack }) {
+  const { colors } = useApp();
   const [operatorId, setOperatorId] = useState(null);
   const [numbers, setNumbers] = useState({});
   const [editingIndex, setEditingIndex] = useState(null); // null = list, 'new' = adding, number = editing
@@ -88,9 +90,9 @@ export default function PayementMethodsScreen({ user, onBack }) {
     <ScrollView style={styles.screenScroll} contentContainerStyle={styles.payContent}>
       <View style={styles.dasheader}>
         <Pressable onPress={onBack} style={styles.payBackBtn}>
-          <Ionicons name="arrow-back-outline" size={'2%'} color="#1A72B6" />
+          <Ionicons name="arrow-back-outline" size={22} color={colors.primary} />
         </Pressable>
-        <Text style={styles.textpay}>الخدمات</Text>
+        <Text style={[styles.textpay, { color: colors.primary }]}>الخدمات</Text>
       </View>
       <ProfileCard user={user} />
 

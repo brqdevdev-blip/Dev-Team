@@ -3,9 +3,12 @@ import { ScrollView, View, Text, Pressable, TextInput, ActivityIndicator } from 
 import { Ionicons } from '@expo/vector-icons';
 import Logo from '../ui/Logo';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 import { findUser, saveSession } from '../../data/mockUsers';
 
 export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
+  const { t, colors, lang } = useApp();
+  const rtl = lang === 'ar' ? styles.rtl : null;
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -35,24 +38,24 @@ export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
   };
 
   return (
-    <View style={styles.lgRoot}>
+    <View style={[styles.lgRoot, { backgroundColor: colors.bg }]}>
       <ScrollView contentContainerStyle={styles.lgScroll} keyboardShouldPersistTaps="handled">
         <View style={styles.lgForm}>
           <Logo width={72} height={62} />
 
-          <Text style={styles.lgTitle}>Connexion</Text>
-          <Text style={styles.lgSub}>Heureux de vous revoir sur Recharge Express</Text>
+          <Text style={[styles.lgTitle, { color: colors.primary }, rtl]}>{t('loginTitle')}</Text>
+          <Text style={[styles.lgSub, { color: colors.subtext }, rtl]}>{t('loginSubtitle')}</Text>
 
           {/* Phone input */}
           <View style={[styles.lgInputWrap, focused === 'phone' && styles.lgInputWrapFocused]}>
             <Ionicons name="call-outline" size={20} color={focused === 'phone' ? '#1A72B6' : '#999'} />
             <TextInput
-              style={styles.lgInput}
+              style={[styles.lgInput, rtl]}
               value={phone}
               onChangeText={setPhone}
-              placeholder="Numéro"
+              placeholder={t('phone')}
               keyboardType="phone-pad"
-              placeholderTextColor="#999"
+              placeholderTextColor={colors.muted}
               onFocus={() => setFocused('phone')}
               onBlur={() => setFocused(null)}
             />
@@ -66,12 +69,12 @@ export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
               color={focused === 'password' ? '#1A72B6' : '#999'}
             />
             <TextInput
-              style={styles.lgInput}
+              style={[styles.lgInput, rtl]}
               value={password}
               onChangeText={setPassword}
-              placeholder="Mot de passe"
+              placeholder={t('password')}
               secureTextEntry={!showPassword}
-              placeholderTextColor="#999"
+              placeholderTextColor={colors.muted}
               onFocus={() => setFocused('password')}
               onBlur={() => setFocused(null)}
             />
@@ -94,18 +97,18 @@ export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
             {loading ? (
               <ActivityIndicator color="#1A72B6" />
             ) : (
-              <Text style={styles.lgBtnText}>Se connecter</Text>
+              <Text style={[styles.lgBtnText, { color: colors.primary }]}>{t('loginBtn')}</Text>
             )}
           </Pressable>
 
           <Pressable onPress={() => {}} hitSlop={8}>
-            <Text style={styles.lgForgot}>Mot de passe oublié ?</Text>
+            <Text style={[styles.lgForgot, { color: colors.primary }, rtl]}>{t('forgotPassword')}</Text>
           </Pressable>
 
           <View style={styles.lgFooter}>
-            <Text style={styles.lgFooterText}>Pas encore de compte ? </Text>
+            <Text style={[styles.lgFooterText, { color: colors.subtext }, rtl]}>{t('noAccount')}</Text>
             <Pressable onPress={onGoToSignUp} hitSlop={8}>
-              <Text style={styles.lgLink}>Créer un compte</Text>
+              <Text style={[styles.lgLink, { color: colors.primary }]}>{t('signupBtn')}</Text>
             </Pressable>
           </View>
         </View>

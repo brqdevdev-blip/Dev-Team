@@ -5,10 +5,12 @@ import ServiceGrid from '../dashboard/ServiceGrid';
 import PromoCard from '../dashboard/PromoCard';
 import TransactionList from '../dashboard/TransactionList';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 
 export default function HomeScreen({ user, onRecharge, onViewAll }) {
+  const { colors } = useApp();
   const handleService = (service) => {
-    if (service.label === 'تعبئة الرصيد' && onRecharge) {
+    if (service.labelKey === 'svcRecharge' && onRecharge) {
       onRecharge();
     }
   };
@@ -16,7 +18,7 @@ export default function HomeScreen({ user, onRecharge, onViewAll }) {
   return (
     <>
       <DashboardHeader user={user} />
-      <ScrollView style={styles.dashScroll} contentContainerStyle={styles.dashScrollContent}>
+      <ScrollView style={styles.dashScroll} contentContainerStyle={[styles.dashScrollContent, { backgroundColor: colors.bgAlt }]}>
         <HeroCard user={user} />
         <ServiceGrid onSelect={handleService} />
         <PromoCard onViewAll={onViewAll} />

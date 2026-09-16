@@ -1,19 +1,20 @@
 import { View, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 
 const ITEMS = [
-  { key: 'home', icon: 'home', label: 'Accueil' },
-
-  { key: 'first', icon: 'gift', label: 'Cartes' },
-  { key: 'recharge', icon: 'call', label: 'Recharge' },
-  { key: 'orders', icon: 'bag-handle', label: 'Boutique' },
-  { key: 'profile', icon: 'settings', label: 'Profil' },
+  { key: 'home', icon: 'home', labelKey: 'navHome' },
+  { key: 'recharge', icon: 'cart', labelKey: 'navRecharge' },
+  { key: 'first', icon: 'gift', labelKey: 'navGiftCards' },
+  { key: 'orders', icon: 'bag-handle', labelKey: 'navShop' },
+  { key: 'profile', icon: 'settings', labelKey: 'navProfile' },
 ];
 
 export default function BottomNav({ active = 'home', onNavigate }) {
+  const { t, colors } = useApp();
   return (
-    <View style={styles.glassNav}>
+    <View style={[styles.glassNav, { backgroundColor: colors.glass }]}>
       {ITEMS.map((item) => {
         const isActive = item.key === active;
         return (
@@ -29,10 +30,10 @@ export default function BottomNav({ active = 'home', onNavigate }) {
             <Ionicons
               name={item.icon}
               size={22}
-              color={isActive ? '#fff' : '#434655'}
+              color={isActive ? colors.primary : colors.subtext}
             />
-            <Text style={[styles.glassNavLabel, isActive && styles.glassNavLabelActive]}>
-              {item.label}
+            <Text style={[styles.glassNavLabel, { color: isActive ? '#fff' : colors.subtext }]}>
+              {t(item.labelKey)}
             </Text>
           </Pressable>
         );

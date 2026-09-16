@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, Pressable, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 
 const PLATFORMS = [
   { name: 'Steam', icon: 'logo-steam', image: require('../../../assets/steam-622x800.webp') },
@@ -14,21 +15,22 @@ const PLATFORMS = [
 ];
 
 export default function PromoCard({ onViewAll }) {
+  const { t, colors } = useApp();
   return (
     <>
       <View style={styles.gcHeader}>
-        <Text style={styles.sectionTitle}>Plateformes de jeu</Text>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('gamingPlatforms')}</Text>
         <Pressable onPress={onViewAll} hitSlop={8}>
-          <Text style={styles.gcViewAll}>Voir tout</Text>
+          <Text style={[styles.gcViewAll, { color: colors.primary }]}>{t('viewAll')}</Text>
         </Pressable>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.gpRow}>
         {PLATFORMS.map((p) => (
-          <View key={p.name} style={styles.gpCard}>
+          <View key={p.name} style={[styles.gpCard, { backgroundColor: colors.glass }]}>
             <Image source={p.image} style={styles.gpBg} />
 
             <View style={styles.gpNameBar}>
-              <Text style={styles.gpName} numberOfLines={1}>{p.name}</Text>
+              <Text style={[styles.gpName, { color: colors.text }]} numberOfLines={1}>{p.name}</Text>
             </View>
           </View>
         ))}

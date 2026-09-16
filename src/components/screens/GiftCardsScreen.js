@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 
 const GIFT_CARDS = [
   { name: 'Valo point Djezzy', amount: '500 DA', icon: 'game-controller-outline', image: require('../../../assets/valorant-gift-card-gbp-v2.webp') },
@@ -14,10 +15,11 @@ const GIFT_CARDS = [
 ];
 
 export default function GiftCardsScreen() {
+  const { t, colors } = useApp();
   return (
-    <View style={styles.shopRoot}>
+    <View style={[styles.shopRoot, { backgroundColor: colors.bg }]}>
       <View style={styles.dasheader}>
-        <Text style={styles.textpay}>Cartes cadeaux</Text>
+        <Text style={[styles.textpay, { color: colors.primary }]}>{t('giftCards')}</Text>
       </View>
       <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
         <View style={styles.gpGrid}>

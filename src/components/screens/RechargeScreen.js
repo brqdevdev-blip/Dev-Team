@@ -8,6 +8,7 @@ import OperatorButton from '../ui/OperatorButton';
 import { OPERATORS } from '../../data/operators';
 import { updateUserBalance } from '../../data/mockUsers';
 import { formatBalance } from '../../utils/format';
+import { useApp } from '../../context/AppContext';
 
 const STORAGE_KEY = 'savedNumbers';
 const HISTORY_KEY = 'rechargeHistory';
@@ -43,6 +44,7 @@ function formatDate(date) {
 }
 
 export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpdate }) {
+  const { t, colors } = useApp();
   const [operatorId, setOperatorId] = useState(null);
   const [numbers, setNumbers] = useState({});
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -112,10 +114,10 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
       <View style={styles.dasheader}>
         {onBack && (
           <Pressable onPress={onBack} style={styles.payBackBtn}>
-            <Ionicons name="arrow-back-outline" size={22} color="#1A72B6" />
+            <Ionicons name="arrow-back-outline" size={22} color={colors.primary} />
           </Pressable>
         )}
-        <Text style={styles.textpay}>تعبئة الرصيد</Text>
+        <Text style={[styles.textpay, { color: colors.primary }]}>{t('rechargeHeader')}</Text>
       </View>
 
       {/* Balance circle */}
@@ -135,13 +137,13 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
           />
         </Svg>
         <View style={styles.rcBalanceCenter}>
-          <Text style={styles.rcBalanceLabel}>SOLDE</Text>
-          <Text style={styles.rcBalanceValue}>{formatBalance(balance)}</Text>
-          <Text style={styles.rcBalanceUnit}>da</Text>
+          <Text style={[styles.rcBalanceLabel, { color: colors.muted }]}>SOLDE</Text>
+          <Text style={[styles.rcBalanceValue, { color: colors.text }]}>{formatBalance(balance)}</Text>
+          <Text style={[styles.rcBalanceUnit, { color: colors.subtext }]}>da</Text>
         </View>
       </View>
 
-      <Text style={styles.paySectionLabel}>Choisissez un opérateur</Text>
+      <Text style={[styles.paySectionLabel, { color: colors.text }]}>{t('chooseOperator')}</Text>
       <View style={styles.payOpRow}>
         {OPERATORS.map((op) => (
           <OperatorButton
@@ -158,7 +160,7 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
 
       {operator && (
         <>
-          <Text style={styles.paySectionLabel}>Sélectionnez la puce à recharger</Text>
+          <Text style={[styles.paySectionLabel, { color: colors.text }]}>{t('selectNumber')}</Text>
           {list.length === 0 ? (
             <Text style={styles.payEmpty}>
               Aucune puce enregistrée{'\n'}Appuyez sur "Gérer mes puces" ci-dessous
@@ -184,14 +186,14 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
             })
           )}
 
-          <Text style={styles.paySectionLabel}>Montant à recharger</Text>
+          <Text style={[styles.paySectionLabel, { color: colors.text }]}>{t('amount')}</Text>
           <TextInput
-            style={styles.payFormInput}
+            style={[styles.payFormInput, { backgroundColor: colors.card, color: colors.text, borderColor: colors.inputBorder }]}
             value={amount}
             onChangeText={setAmount}
             placeholder="Ex : 500"
             keyboardType="numeric"
-            placeholderTextColor="#999"
+            placeholderTextColor={colors.muted}
           />
 
           <Pressable onPress={confirmRecharge} style={styles.rcConfirmBtn}>
