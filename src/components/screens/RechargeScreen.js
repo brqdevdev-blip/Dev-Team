@@ -200,12 +200,15 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
         </>
       )}
 
+<<<<<<< HEAD
       {/* Manage puces (existing page) */}
       <Pressable onPress={onManagePuces} style={styles.payAddNumBtn}>
         <Ionicons name="add-outline" size={20} color="#fff" />
         <Text style={styles.payAddText}>Gérer mes puces (ajouter / supprimer)</Text>
       </Pressable>
 
+=======
+>>>>>>> 0107044 (Initial commit)
       {/* Historique */}
       <Text style={styles.sectionTitle}>Historique</Text>
       {history.length === 0 ? (

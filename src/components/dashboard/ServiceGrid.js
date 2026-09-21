@@ -6,16 +6,31 @@ const SHORTCUTS = [
   { icon: 'call-outline', label: 'تعبئة الرصيد', bg: '#E4A57B' },
   { icon: 'phone-portrait-sharp', label: 'الهواتف', bg: '#003527' },
   { icon: 'swap-horizontal-outline', label: 'الملحقات', bg: '#00496A' },
+<<<<<<< HEAD
   { icon: 'book-outline', label: 'افهرس البضائع', bg: '#BA1A1A' },
   { icon: 'card-sharp', label: 'طوارئ', bg: '#BA1A1A' },
   { icon: 'receipt-outline', label: 'لفهرس الرقمي', bg: '#BA1A1A' },
 ];
 
+=======
+];
+
+function chunk(arr, size) {
+  const rows = [];
+  for (let i = 0; i < arr.length; i += size) rows.push(arr.slice(i, i + size));
+  return rows;
+}
+
+>>>>>>> 0107044 (Initial commit)
 export default function ServiceGrid({ onSelect }) {
   return (
     <>
       <Text style={styles.sectionTitle}>Services</Text>
+<<<<<<< HEAD
       {[SHORTCUTS.slice(0, 3), SHORTCUTS.slice(3, 6)].map((row, r) => (
+=======
+      {chunk(SHORTCUTS, 3).map((row, r) => (
+>>>>>>> 0107044 (Initial commit)
         <View key={r} style={styles.serviceRow}>
           {row.map((s) => (
             <Pressable key={s.label} onPress={() => onSelect && onSelect(s)} style={styles.serviceBtn}>
@@ -29,4 +44,8 @@ export default function ServiceGrid({ onSelect }) {
       ))}
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0107044 (Initial commit)
