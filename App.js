@@ -6,9 +6,18 @@ import LoginScreen from './src/components/screens/LoginScreen';
 import WelcomeScreen from './src/components/screens/WelcomeScreen';
 import MainScreen from './src/components/screens/MainScreen';
 import styles from './src/styles';
+import { AppProvider } from './src/context/AppContext';
 import { loadSavedUsers, clearSession } from './src/data/mockUsers';
 
 export default function App() {
+  return (
+    <AppProvider>
+      <AppInner />
+    </AppProvider>
+  );
+}
+
+function AppInner() {
   const [screen, setScreen] = useState('signup');
   const [user, setUser] = useState(null);
 

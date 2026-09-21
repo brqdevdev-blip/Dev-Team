@@ -1,13 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-
-
-  Scroll: {backgroundColor: '#1A72B6', width:'100%' ,},
-  payHeader: { width: '100%', color : '#1A72B6', paddingVertical: '0', paddingHorizontal: '15%' , backgroundColor: '#000', flexDirection: 'row', alignItems: 'center' },
+  Scroll: { backgroundColor: '#1A72B6', width: '100%' },
+  payHeader: { width: '100%', color: '#1A72B6', paddingVertical: '0', paddingHorizontal: '15%', backgroundColor: '#000', flexDirection: 'row', alignItems: 'center' },
   payHeaderBtn: { width: '40%', height: 40, alignItems: 'center', justifyContent: 'center' },
   payHeaderTitle: { flex: 1, color: '#fff', fontSize: 17, fontWeight: 'bold', textAlign: 'center' },
-  textpay: { color: '#1A72B6', fontSize:24  },
+  textpay: { color: '#1A72B6', fontSize: 28, fontWeight: 'bold' },
 
   container: { width: '100%', height: '100%', flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
   scrollContent: { alignItems: 'center', paddingVertical: 40 },
@@ -29,59 +27,47 @@ export default StyleSheet.create({
   link: { color: '#0B1C30', fontSize: 14, fontWeight: '600' },
   forgot: { color: '#3F6BCD', fontSize: 14, fontWeight: '600', marginTop: 16, alignSelf: 'center', marginRight: '0' },
   error: { color: '#E3282C', fontSize: 14, marginTop: 12, textAlign: 'center' },
-<<<<<<< HEAD
-  dashRoot: { flex: 1, width: '100%', backgroundColor: '#F8FAF6' },
-  dashHeader: { width: '100%', paddingVertical: 14, paddingHorizontal: 16, backgroundColor: '#3296E4', flexDirection: 'row', alignItems: 'center' },
-  dashAvatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
-  dashAvatarImg: { width: 34, height: 34, resizeMode: 'contain' },
-  dashHeaderText: { flex: 1, marginLeft: 12 },
-  dashGreeting: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
-  dashSub: { color: '#D9E6F5', fontSize: 12, marginTop: 2 },
-=======
+
   dashRoot: { flex: 1, width: '100%', backgroundColor: '#fff' },
-  dashHeader: { backgroundColor:'#fff', width: '97%', margin: '1%',borderRadius: 10, padding:15, flexDirection: 'row', alignItems: 'center' },
-  glassHeader: { marginHorizontal: 10, marginTop: 10, borderRadius: 20, paddingVertical: 14, paddingHorizontal: 16, backgroundColor: 'rgba(255, 255, 255, 0.92)', borderWidth: 1, borderColor: 'rgba(0, 0, 0, 0.06)', flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.08, shadowRadius: 16, elevation: 4 },
-  dashAvatar: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  dashHeader: { backgroundColor: '#fff', width: '97%', margin: '1%', borderRadius: 10, padding: 15, flexDirection: 'row', alignItems: 'center' },
+  glassHeader: { marginHorizontal: 10, marginTop: 10, borderRadius: 20, paddingVertical: 14, paddingHorizontal: 16, backgroundColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(14px) saturate(160%)', flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.08, shadowRadius: 16, elevation: 4 },
+  dashAvatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#E8F1FB', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   dashAvatarImg: { width: 38, height: 38, resizeMode: 'contain' },
   dashHeaderText: { flex: 1, marginLeft: 12 },
   dashGreeting: { color: '#0B1C30', fontSize: 16, fontWeight: 'bold' },
   dashSub: { color: '#9AA3AE', fontSize: 12, marginTop: 2 },
   dashIconBtn: { marginLeft: 10, width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.15)', alignItems: 'center', justifyContent: 'center' },
->>>>>>> 0107044 (Initial commit)
   dashScroll: { flex: 1 },
   dashScrollContent: { padding: 16, paddingBottom: 90 },
   screenContainer: { flex: 1, backgroundColor: '#fff' },
-  screenScroll: { flex: 1, width: '100%'  },
-  screenScrollContent: {padding: 20,  paddingBottom: 90 },
-<<<<<<< HEAD
-  heroCard: { backgroundColor: '#3296E4', borderRadius: 14, padding: 18, marginBottom: 20 },
-  heroLabel: { color: '#D9E6F5', fontSize: 13 },
-  heroBalance: { color: '#fff', fontSize: 30, fontWeight: 'bold', marginTop: 6 },
-  heroRow: { flexDirection: 'row', alignItems: 'center', marginTop: 12 },
-  heroPhone: { color: '#fff', fontSize: 14, marginLeft: 6 },
-  heroBtn: { backgroundColor: '#fff', borderRadius: 8, paddingVertical: 8, paddingHorizontal: 14, marginLeft: 'auto', alignItems: 'center' },
-  heroBtnText: { color: '#0B1C30', fontSize: 13, fontWeight: '600' },
-  sectionTitle: { fontSize: 16, fontWeight: 'bold', color: '#0B1C30', marginTop: 4, marginBottom: 12 },
-=======
-  heroCard: { width: '100%', padding: '3%', borderRadius: 14, marginBottom: 15 },
+  screenScroll: { flex: 1, width: '100%' },
+  screenScrollContent: { padding: 20, paddingBottom: 90  },
+
   heroCard: { borderRadius: 20, padding: 20, marginBottom: 20, shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.15, shadowRadius: 16, elevation: 4 },
   heroLabel: { color: '#D9E6F5', fontSize: 12, fontWeight: '600', letterSpacing: 1 },
   heroBalance: { color: '#fff', fontSize: 32, fontWeight: 'bold', marginTop: 6 },
   heroRow: { flexDirection: 'row', alignItems: 'center', marginTop: 14 },
   heroPhone: { color: '#fff', fontSize: 14, marginLeft: 6 },
-  heroBtn: { flexDirection: 'row', alignItems: 'center',  alignContent: 'center', width: '100%', backgroundColor: '#fff', borderRadius: 10, paddingVertical: 10, paddingHorizontal: 16 },
+  heroBtn: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 10, paddingVertical: 10, paddingHorizontal: 16 },
   heroBtnText: { color: '#1A72B6', fontSize: 14, fontWeight: '600', marginLeft: 6 },
   sectionTitle: { fontSize: 16, fontWeight: 'bold', color: '#0B1C30', marginTop: '4%', marginBottom: 12 },
->>>>>>> 0107044 (Initial commit)
+
+  svcRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18 },
+  svcItem: { flex: 1, alignItems: 'center' },
+  svcCircle: { width: 62, height: 62, borderRadius: 31, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.25, shadowRadius: 8, elevation: 4 },
+  svcBtnPressed: { transform: [{ scale: 0.92 }] },
+  svcLabel: { fontSize: 11, fontWeight: '600', color: '#434655', marginTop: 6, textAlign: 'center' },
   serviceRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 },
   serviceBtn: { flex: 1, alignItems: 'center' },
   serviceCircle: { width: 58, height: 58, borderRadius: 29, alignItems: 'center', justifyContent: 'center' },
   serviceLabel: { fontSize: 12, color: '#434655', marginTop: 6 },
+
   promoCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 12, padding: 14, marginBottom: 20 },
   promoImg: { width: 48, height: 48, borderRadius: 24, resizeMode: 'contain' },
   promoTextWrap: { flex: 1, marginLeft: 12 },
   promoTitle: { fontSize: 15, fontWeight: 'bold', color: '#0B1C30' },
   promoSub: { fontSize: 12, color: '#434655', marginTop: 2 },
+
   txRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 12, padding: 12, marginBottom: 10 },
   txIcon: { width: 36, height: 36, borderRadius: 18, backgroundColor: '#F2F6FC', alignItems: 'center', justifyContent: 'center' },
   txTextWrap: { flex: 1, marginLeft: 10 },
@@ -90,46 +76,33 @@ export default StyleSheet.create({
   txAmount: { fontSize: 13, fontWeight: '600' },
   txPos: { color: '#2E9E4F' },
   txNeg: { color: '#E3282C' },
-<<<<<<< HEAD
-  bottomNav: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 64, paddingBottom: 8, backgroundColor: '#fff', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', borderTopWidth: 1, borderTopColor: '#E1E3E0' },
-  navItem: { flex: 1, alignItems: 'center' },
-  navLabel: { fontSize: 10, color: '#9AA3AE', marginTop: 2 },
-  navLabelActive: { fontSize: 10, color: '#1A72B6', marginTop: 2 },
-  settingsHeader: { width: '100%', paddingVertical: 14, paddingHorizontal: 16, backgroundColor: '#1A72B6', flexDirection: 'row', alignItems: 'center' },
-  settingsHeaderTitle: { flex: 1, color: '#fff', fontSize: 17, fontWeight: 'bold', textAlign: 'center', borderRadius: '4'},
-  dasheader: { width: '100%', marginBottom:'5%', paddingVertical: 14,backgroundColor: '#fff', paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' , shadowColor: '#000000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 12},
-  settingsProfileCard: {
-    width: '95% ', backgroundColor: '#fff', borderRadius: 20, padding: 20, marginBottom: 20, alignItems: 'center', shadowColor: '#000000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 12 },
-=======
-  glassNav: { position: 'absolute', left: 10, right: 10, bottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.92)', borderWidth: 1, borderColor: 'rgba(0, 0, 0, 0.06)', borderRadius: 40, padding: 8, flexDirection: 'row', justifyContent: 'center', gap: 8, shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.1, shadowRadius: 30, elevation: 10, zIndex: 50 },
+
+  glassNav: { position: 'absolute', left: 10, right: 10, bottom: 12, backgroundColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(14px) saturate(160%)', borderRadius: 40, padding: 8, flexDirection: 'row', justifyContent: 'center', gap: 8, shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.1, shadowRadius: 30, elevation: 10, zIndex: 50 },
   glassNavItem: { flex: 1, alignItems: 'center', paddingVertical: 10, borderRadius: 999 },
   glassNavItemActive: { backgroundColor: 'rgba(0, 122, 255, 0.4)' },
   glassNavItemPressed: { transform: [{ scale: 0.96 }] },
   glassNavLabel: { fontSize: 10, fontWeight: '600', color: '#434655', marginTop: 4 },
   glassNavLabelActive: { color: '#fff' },
+
   settingsHeader: { width: '100%', paddingVertical: 14, paddingHorizontal: 16, backgroundColor: '#1A72B6', flexDirection: 'row', alignItems: 'center' },
-  settingsHeaderTitle: { flex: 1, color: '#fff', fontSize: 17, fontWeight: 'bold', textAlign: 'center', borderRadius: '4'},
-  dasheader: { marginHorizontal: 10, marginTop: 10, marginBottom: 16, borderRadius: 20, paddingVertical: 14, paddingHorizontal: 16, backgroundColor: 'rgba(255, 255, 255, 0.92)', borderWidth: 1, borderColor: 'rgba(0, 0, 0, 0.06)', flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.08, shadowRadius: 16, elevation: 4 },
+  settingsHeaderTitle: { flex: 1, color: '#fff', fontSize: 17, fontWeight: 'bold', textAlign: 'center', borderRadius: '4' },
+  dasheader: { marginHorizontal: 10, marginTop: 10, marginBottom: 16, borderRadius: 20, paddingVertical: 18, paddingHorizontal: 18, backgroundColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(14px) saturate(160%)', flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.08, shadowRadius: 16, elevation: 4 },
   settingsProfileCard: { width: '97%', alignSelf: 'center', backgroundColor: '#fff', borderRadius: 20, padding: 20, marginBottom: 20, alignItems: 'center', shadowColor: '#000000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 12 },
->>>>>>> 0107044 (Initial commit)
   settingsAvatar: { width: 96, height: 96, borderRadius: 48, backgroundColor: '#E1E3E0', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   settingsAvatarImg: { width: 92, height: 92, borderRadius: 46, resizeMode: 'contain' },
   settingsEditBadge: { position: 'absolute', right: 0, bottom: 0, width: 28, height: 28, borderRadius: 14, backgroundColor: '#1A72B6', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#fff' },
   settingsName: { fontSize: 18, fontWeight: 'bold', color: '#0B1C30', marginTop: 12 },
   settingsPhone: { fontSize: 14, color: '#434655', marginTop: 4 },
-  settingsRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 12, padding: 14, marginBottom: 10 },
+  settingsRow: { width: '100%' , flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 12, padding: 14, marginBottom: 10 },
   settingsRowIcon: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#F2F6FC', alignItems: 'center', justifyContent: 'center' },
   settingsRowText: { flex: 1, marginLeft: 12 },
   settingsRowTitle: { fontSize: 15, fontWeight: '600', color: '#0B1C30' },
   settingsRowSub: { fontSize: 12, color: '#9AA3AE', marginTop: 2 },
   settingsChevron: { fontSize: 18, color: '#9AA3AE' },
 
-  // Payment methods screen
-  //payRoot: {  backgroundColor: '#1A72B6', width:'100%' },
-  creenScrollContent: { width: '100%',height :'10%', backgroundColor:'#f00' },
-  payContent: {
-    paddingTop: '0%'  },
-  paySectionLabel: { fontSize: 14, fontWeight: '600', color: '#0B1C30', margin: '4%', marginBottom: 12  },
+  creenScrollContent: { width: '100%', height: '10%', backgroundColor: '#f00' },
+  payContent: { paddingTop: '0%' },
+  paySectionLabel: { fontSize: 14, fontWeight: '600', color: '#0B1C30', margin: '4%', marginBottom: 12 },
   payLogosRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 16 },
   payLogoCard: { flex: 1, alignItems: 'center', backgroundColor: '#fff', borderRadius: 12, paddingVertical: 16, paddingHorizontal: 8, marginHorizontal: 4, borderWidth: 2, borderColor: 'transparent' },
   payLogoCardSelected: { borderColor: '#1A72B6' },
@@ -147,22 +120,17 @@ export default StyleSheet.create({
   payRowSub: { fontSize: 12, color: '#9AA3AE', marginTop: 2 },
   payRemoveBtn: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
 
-  // Operators (Djezzy / Mobilis / Ooredoo)
-  payBackBtn: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center' },
-  // Drop shadow: x=4, y=4, blur=5.8, #000000 at 25%
+  payBackBtn: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
   payOpRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 },
   payOpBtn: { flex: 1, alignItems: 'center', backgroundColor: '#fff', borderRadius: 14, paddingVertical: 18, marginHorizontal: 4, shadowColor: '#000000', shadowOffset: { width: 4, height: 4 }, shadowOpacity: 0.25, shadowRadius: 5.8 },
-  // Pressed: drop shadow removed, inner shadow overlay shown instead
   payOpBtnPressed: { shadowOpacity: 0 },
   payOpImgWrap: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
   payOpImg: { width: 40, height: 40, resizeMode: 'contain' },
   payOpImgText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
   payOpName: { fontSize: 13, fontWeight: 'bold', color: '#0B1C30', marginTop: 8 },
   payOpChevron: { marginLeft: 'auto' },
-  // Inner shadow simulation (same params: #000000 at 25%)
   payOpInnerShadow: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 14, backgroundColor: 'rgba(0,0,0,0.25)' },
 
-  // Saved numbers list
   payNumRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 12, padding: 14, marginBottom: 10 },
   payNumBadge: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginRight: 12 },
   payNumBadgeText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
@@ -171,14 +139,12 @@ export default StyleSheet.create({
   payNumDelete: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginLeft: 8, backgroundColor: '#FDE8E8' },
   payAddNumBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#31744C', borderRadius: 10, paddingVertical: 14, margin: 20 },
 
-  // Add / edit form
   payFormInput: { width: '100%', borderWidth: 1, borderColor: '#ccc', borderRadius: 8, paddingVertical: 14, paddingHorizontal: 16, fontSize: 18, textAlign: 'center', marginTop: 16 },
   payFormSave: { backgroundColor: '#31744C', borderRadius: 10, paddingVertical: 14, marginTop: 20, alignItems: 'center' },
   payFormSaveText: { color: '#fff', fontSize: 16, fontWeight: '600' },
   payFormCancel: { backgroundColor: '#F2F2F2', borderRadius: 10, paddingVertical: 12, marginTop: 10, alignItems: 'center' },
   payFormCancelText: { color: '#434655', fontSize: 15, fontWeight: '600' },
 
-  // Recharge screen
   rcBalanceWrap: { alignItems: 'center', justifyContent: 'center', marginVertical: 8 },
   rcBalanceCenter: { position: 'absolute', alignItems: 'center' },
   rcBalanceLabel: { fontSize: 12, color: '#9AA3AE', fontWeight: '600', letterSpacing: 1 },
@@ -191,10 +157,7 @@ export default StyleSheet.create({
   rcRadioDot: { width: 12, height: 12, borderRadius: 6, backgroundColor: '#1A72B6' },
   rcConfirmBtn: { backgroundColor: '#31744C', borderRadius: 10, paddingVertical: 16, alignItems: 'center', marginTop: 8 },
   rcConfirmText: { color: '#fff', fontSize: 16, fontWeight: '600' },
-<<<<<<< HEAD
-=======
 
-  // Shop (boutique)
   shopRoot: { flex: 1, width: '100%', backgroundColor: '#fff' },
   shopCartBtn: { marginLeft: 'auto', padding: 4 },
   shopCartBadge: { position: 'absolute', top: -4, right: -6, minWidth: 18, height: 18, borderRadius: 9, backgroundColor: '#E3282C', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
@@ -205,7 +168,7 @@ export default StyleSheet.create({
   shopCatText: { fontSize: 13, color: '#434655', fontWeight: '600' },
   shopCatTextActive: { color: '#fff' },
   shopGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' },
-  shopCard: { width: '48%', backgroundColor: '#fff', borderRadius: 12, marginBottom: 12, overflow: 'hidden', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, shadowRadius: 8, elevation: 2 },
+  shopCard: { width: '48%', backgroundColor: 'rgba(255, 255, 255, 0.6)', borderRadius: 12, marginBottom: 12, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(12px) saturate(160%)', shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.06, shadowRadius: 8, elevation: 2 },
   shopCardImgWrap: { width: '100%', height: 110, backgroundColor: '#F2F6FC' },
   shopCardImg: { width: '100%', height: '100%', resizeMode: 'contain' },
   shopCardBody: { padding: 10 },
@@ -231,7 +194,6 @@ export default StyleSheet.create({
   shopTotalLabel: { fontSize: 15, fontWeight: '600', color: '#434655' },
   shopTotalValue: { fontSize: 18, fontWeight: 'bold', color: '#0B1C30' },
 
-  // Gift cards
   gcHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
   gcViewAll: { color: '#1A72B6', fontSize: 13, fontWeight: '600' },
   gcRow: { paddingRight: 16 },
@@ -240,26 +202,28 @@ export default StyleSheet.create({
   gcName: { fontSize: 12, fontWeight: '600', color: '#0B1C30', marginTop: 8, textAlign: 'center' },
   gcAmount: { fontSize: 13, fontWeight: '700', color: '#1A72B6', marginTop: 2 },
 
-  // Gaming platforms grid
   gpSectionGap: { marginTop: 24 },
   gpGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' },
   gpRow: { paddingRight: 16 },
-  gpCard: { width: 92, marginRight: 8, borderRadius: 18, overflow: 'hidden', backgroundColor: '#fff', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 10, elevation: 3 },
+  gpCard: { width: 92, marginRight: 8, borderRadius: 18, overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(12px) saturate(160%)', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 10, elevation: 3 },
   gpBg: { width: '100%', height: 100, resizeMode: 'cover' },
   gpLogoWrap: { position: 'absolute', top: 0, left: 0, right: 0, height: 100, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.1)' },
   gpNameBar: { backgroundColor: '#fff', paddingVertical: 8, alignItems: 'center' },
   gpName: { fontSize: 11, fontWeight: 'bold', color: '#000' },
 
-  // Gift cards page cards
-  gcCardBig: { width: '48%', borderRadius: 22, overflow: 'hidden', backgroundColor: '#fff', marginBottom: 16, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 10, elevation: 3 },
+  gcCardBig: { width: '48%', borderRadius: 22, overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(12px) saturate(160%)', marginBottom: 16, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 10, elevation: 3 },
   gcCardImg: { width: '100%', height: 130, resizeMode: 'cover' },
   gcCardOverlay: { position: 'absolute', top: 0, left: 0, right: 0, height: 130, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.1)' },
   gcCardBar: { backgroundColor: '#fff', paddingVertical: 12, alignItems: 'center' },
   gcCardName: { fontSize: 14, fontWeight: 'bold', color: '#000' },
   gcCardAmount: { fontSize: 13, fontWeight: '700', color: '#1A72B6', marginTop: 2 },
 
-  // Login (light blue)
+  emergencySos: { width: 120, height: 120, borderRadius: 60, backgroundColor: '#E3282C', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', marginTop: 8, shadowColor: '#E3282C', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.4, shadowRadius: 16, elevation: 6 },
+  emergencySosPressed: { transform: [{ scale: 0.94 }] },
+  emergencySosText: { color: '#fff', fontSize: 22, fontWeight: 'bold', marginTop: 4, letterSpacing: 2 },
+
   lgRoot: { flex: 1, width: '100%', backgroundColor: '#fff' },
+  rtl: { textAlign: 'right' },
   lgScroll: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
   lgForm: { width: '100%', maxWidth: 420, alignItems: 'center', paddingVertical: 48, paddingHorizontal: 32, position: 'relative', overflow: 'hidden' },
   lgTitle: { color: '#1A72B6', fontSize: 26, fontWeight: '700', letterSpacing: 8, textTransform: 'uppercase', textAlign: 'center', marginTop: 28 },
@@ -274,5 +238,4 @@ export default StyleSheet.create({
   lgFooter: { flexDirection: 'row', alignItems: 'center', marginTop: 30 },
   lgFooterText: { color: '#666', fontSize: 14 },
   lgLink: { color: '#1A72B6', fontSize: 14, fontWeight: '600' },
->>>>>>> 0107044 (Initial commit)
 });

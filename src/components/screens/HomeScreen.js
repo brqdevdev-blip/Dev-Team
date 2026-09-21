@@ -5,33 +5,26 @@ import ServiceGrid from '../dashboard/ServiceGrid';
 import PromoCard from '../dashboard/PromoCard';
 import TransactionList from '../dashboard/TransactionList';
 import styles from '../../styles';
+import { useApp } from '../../context/AppContext';
 
-<<<<<<< HEAD
-export default function HomeScreen({ user, onLogout, onRecharge }) {
-=======
-export default function HomeScreen({ user, onRecharge, onViewAll }) {
->>>>>>> 0107044 (Initial commit)
+export default function HomeScreen({ user, onRecharge, onViewAll, onEmergency }) {
+  const { colors } = useApp();
   const handleService = (service) => {
-    if (service.label === 'تعبئة الرصيد' && onRecharge) {
+    if (service.labelKey === 'svcRecharge' && onRecharge) {
       onRecharge();
+    }
+    if (service.labelKey === 'svcEmergency' && onEmergency) {
+      onEmergency();
     }
   };
 
   return (
     <>
-<<<<<<< HEAD
-      <DashboardHeader user={user} onLogout={onLogout} />
-      <ScrollView style={styles.dashScroll} contentContainerStyle={styles.dashScrollContent}>
-        <HeroCard user={user} />
-        <ServiceGrid onSelect={handleService} />
-        <PromoCard />
-=======
       <DashboardHeader user={user} />
-      <ScrollView style={styles.dashScroll} contentContainerStyle={styles.dashScrollContent}>
+      <ScrollView style={styles.dashScroll} contentContainerStyle={[styles.dashScrollContent, { backgroundColor: colors.bgAlt }]}>
         <HeroCard user={user} />
         <ServiceGrid onSelect={handleService} />
         <PromoCard onViewAll={onViewAll} />
->>>>>>> 0107044 (Initial commit)
         <TransactionList />
       </ScrollView>
     </>
