@@ -7,8 +7,7 @@ import { useApp } from '../../context/AppContext';
 import { findUser, registerUser, saveUsers } from '../../data/mockUsers';
 
 export default function SignUpScreen({ onGoToLogin, onSignUpSuccess }) {
-  const { t, colors, lang } = useApp();
-  const rtl = lang === 'ar' ? styles.rtl : null;
+  const { t, colors } = useApp();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -49,14 +48,14 @@ export default function SignUpScreen({ onGoToLogin, onSignUpSuccess }) {
         <View style={styles.lgForm}>
           <Logo width={72} height={62} />
 
-          <Text style={[styles.lgTitle, { color: colors.primary }, rtl]}>{t('signupTitle')}</Text>
-          <Text style={[styles.lgSub, { color: colors.subtext }, rtl]}>{t('signupSubtitle')}</Text>
+          <Text style={[styles.lgTitle, { color: colors.primary }]}>{t('signupTitle')}</Text>
+          <Text style={[styles.lgSub, { color: colors.subtext }]}>{t('signupSubtitle')}</Text>
 
           {/* Name input */}
           <View style={[styles.lgInputWrap, focused === 'name' && styles.lgInputWrapFocused]}>
             <Ionicons name="person-outline" size={20} color={focused === 'name' ? '#1A72B6' : '#999'} />
             <TextInput
-              style={[styles.lgInput, rtl]}
+              style={styles.lgInput}
               value={name}
               onChangeText={setName}
               placeholder={t('name')}
@@ -70,7 +69,7 @@ export default function SignUpScreen({ onGoToLogin, onSignUpSuccess }) {
           <View style={[styles.lgInputWrap, focused === 'phone' && styles.lgInputWrapFocused]}>
             <Ionicons name="call-outline" size={20} color={focused === 'phone' ? '#1A72B6' : '#999'} />
             <TextInput
-              style={[styles.lgInput, rtl]}
+              style={styles.lgInput}
               value={phone}
               onChangeText={setPhone}
               placeholder={t('phone')}
@@ -89,7 +88,7 @@ export default function SignUpScreen({ onGoToLogin, onSignUpSuccess }) {
               color={focused === 'password' ? '#1A72B6' : '#999'}
             />
             <TextInput
-              style={[styles.lgInput, rtl]}
+              style={styles.lgInput}
               value={password}
               onChangeText={setPassword}
               placeholder={t('password')}
@@ -115,7 +114,7 @@ export default function SignUpScreen({ onGoToLogin, onSignUpSuccess }) {
               color={focused === 'confirm' ? '#1A72B6' : '#999'}
             />
             <TextInput
-              style={[styles.lgInput, rtl]}
+              style={styles.lgInput}
               value={confirm}
               onChangeText={setConfirm}
               placeholder={t('confirmPassword')}
@@ -148,7 +147,7 @@ export default function SignUpScreen({ onGoToLogin, onSignUpSuccess }) {
           </Pressable>
 
           <View style={styles.lgFooter}>
-            <Text style={[styles.lgFooterText, { color: colors.subtext }, rtl]}>{t('haveAccount')}</Text>
+            <Text style={[styles.lgFooterText, { color: colors.subtext }]}>{t('haveAccount')}</Text>
             <Pressable onPress={onGoToLogin} hitSlop={8}>
               <Text style={[styles.lgLink, { color: colors.primary }]}>{t('loginBtn')}</Text>
             </Pressable>

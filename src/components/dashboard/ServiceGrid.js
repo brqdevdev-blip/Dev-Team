@@ -24,7 +24,7 @@ export default function ServiceGrid({ onSelect }) {
             style={({ pressed }) => [styles.svcItem, pressed && styles.svcBtnPressed]}
           >
             <LinearGradient
-              colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.1)']}
+              colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.01)']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={[styles.svcCircle, { borderColor: `${s.color}55` }]}

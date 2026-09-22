@@ -7,7 +7,7 @@ import TransactionList from '../dashboard/TransactionList';
 import styles from '../../styles';
 import { useApp } from '../../context/AppContext';
 
-export default function HomeScreen({ user, onRecharge, onViewAll, onEmergency }) {
+export default function HomeScreen({ user, onRecharge, onViewAll, onEmergency, onPhones }) {
   const { colors } = useApp();
   const handleService = (service) => {
     if (service.labelKey === 'svcRecharge' && onRecharge) {
@@ -15,6 +15,9 @@ export default function HomeScreen({ user, onRecharge, onViewAll, onEmergency })
     }
     if (service.labelKey === 'svcEmergency' && onEmergency) {
       onEmergency();
+    }
+    if (service.labelKey === 'svcPhones' && onPhones) {
+      onPhones();
     }
   };
 

@@ -5,8 +5,9 @@ import { useApp } from '../../context/AppContext';
 
 const ITEMS = [
   { key: 'home', icon: 'home', labelKey: 'navHome' },
-  { key: 'recharge', icon: 'cart', labelKey: 'navRecharge' },
+
   { key: 'first', icon: 'gift', labelKey: 'navGiftCards' },
+    { key: 'recharge', icon: 'call', labelKey: 'navRecharge' },
   { key: 'orders', icon: 'bag-handle', labelKey: 'navShop' },
   { key: 'profile', icon: 'settings', labelKey: 'navProfile' },
 ];

@@ -7,7 +7,7 @@ export default function DashboardHeader({ user }) {
   const { t, colors } = useApp();
   return (
     <View style={[styles.glassHeader, { backgroundColor: colors.glass }]}>
-      <View style={[styles.dashAvatar, { backgroundColor: colors.primarySoft }]}>
+      <View style={[styles.dashAvatar, { backgroundColor:'#fff' }]}>
         <Logo width={34} height={34} />
       </View>
       <View style={styles.dashHeaderText}>

@@ -28,9 +28,7 @@ export default function PromoCard({ onViewAll }) {
         {PLATFORMS.map((p) => (
           <View key={p.name} style={[styles.gpCard, { backgroundColor: colors.glass }]}>
             <Image source={p.image} style={styles.gpBg} />
-            <View style={styles.gpLogoWrap}>
-              <Ionicons name={p.icon} size={34} color="#fff" />
-            </View>
+
             <View style={styles.gpNameBar}>
               <Text style={[styles.gpName, { color: colors.text }]} numberOfLines={1}>{p.name}</Text>
             </View>

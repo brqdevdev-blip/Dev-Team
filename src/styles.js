@@ -88,7 +88,7 @@ export default StyleSheet.create({
   settingsHeaderTitle: { flex: 1, color: '#fff', fontSize: 17, fontWeight: 'bold', textAlign: 'center', borderRadius: '4' },
   dasheader: { marginHorizontal: 10, marginTop: 10, marginBottom: 16, borderRadius: 20, paddingVertical: 18, paddingHorizontal: 18, backgroundColor: 'rgba(255, 255, 255, 0.6)', borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.55)', backdropFilter: 'blur(14px) saturate(160%)', flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.08, shadowRadius: 16, elevation: 4 },
   settingsProfileCard: { width: '97%', alignSelf: 'center', backgroundColor: '#fff', borderRadius: 20, padding: 20, marginBottom: 20, alignItems: 'center', shadowColor: '#000000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 12 },
-  settingsAvatar: { width: 96, height: 96, borderRadius: 48, backgroundColor: '#E1E3E0', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  settingsAvatar: { width: 100, height: 100, borderRadius: 48, backgroundColor: '#E1E3E0', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   settingsAvatarImg: { width: 92, height: 92, borderRadius: 46, resizeMode: 'contain' },
   settingsEditBadge: { position: 'absolute', right: 0, bottom: 0, width: 28, height: 28, borderRadius: 14, backgroundColor: '#1A72B6', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: '#fff' },
   settingsName: { fontSize: 18, fontWeight: 'bold', color: '#0B1C30', marginTop: 12 },

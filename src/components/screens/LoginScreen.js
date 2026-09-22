@@ -7,8 +7,7 @@ import { useApp } from '../../context/AppContext';
 import { findUser, saveSession } from '../../data/mockUsers';
 
 export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
-  const { t, colors, lang } = useApp();
-  const rtl = lang === 'ar' ? styles.rtl : null;
+  const { t, colors } = useApp();
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -43,14 +42,14 @@ export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
         <View style={styles.lgForm}>
           <Logo width={72} height={62} />
 
-          <Text style={[styles.lgTitle, { color: colors.primary }, rtl]}>{t('loginTitle')}</Text>
-          <Text style={[styles.lgSub, { color: colors.subtext }, rtl]}>{t('loginSubtitle')}</Text>
+          <Text style={[styles.lgTitle, { color: colors.primary }]}>{t('loginTitle')}</Text>
+          <Text style={[styles.lgSub, { color: colors.subtext }]}>{t('loginSubtitle')}</Text>
 
           {/* Phone input */}
           <View style={[styles.lgInputWrap, focused === 'phone' && styles.lgInputWrapFocused]}>
             <Ionicons name="call-outline" size={20} color={focused === 'phone' ? '#1A72B6' : '#999'} />
             <TextInput
-              style={[styles.lgInput, rtl]}
+              style={styles.lgInput}
               value={phone}
               onChangeText={setPhone}
               placeholder={t('phone')}
@@ -69,7 +68,7 @@ export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
               color={focused === 'password' ? '#1A72B6' : '#999'}
             />
             <TextInput
-              style={[styles.lgInput, rtl]}
+              style={styles.lgInput}
               value={password}
               onChangeText={setPassword}
               placeholder={t('password')}
@@ -102,11 +101,11 @@ export default function LoginScreen({ onGoToSignUp, onLoginSuccess }) {
           </Pressable>
 
           <Pressable onPress={() => {}} hitSlop={8}>
-            <Text style={[styles.lgForgot, { color: colors.primary }, rtl]}>{t('forgotPassword')}</Text>
+            <Text style={[styles.lgForgot, { color: colors.primary }]}>{t('forgotPassword')}</Text>
           </Pressable>
 
           <View style={styles.lgFooter}>
-            <Text style={[styles.lgFooterText, { color: colors.subtext }, rtl]}>{t('noAccount')}</Text>
+            <Text style={[styles.lgFooterText, { color: colors.subtext }]}>{t('noAccount')}</Text>
             <Pressable onPress={onGoToSignUp} hitSlop={8}>
               <Text style={[styles.lgLink, { color: colors.primary }]}>{t('signupBtn')}</Text>
             </Pressable>

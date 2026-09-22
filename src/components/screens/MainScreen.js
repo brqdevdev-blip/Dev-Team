@@ -26,7 +26,7 @@ export default function MainScreen({ user, onLogout, onUserUpdate }) {
 
   return (
     <SafeAreaView style={[styles.dashRoot, { backgroundColor: colors.bg }]}>
-      {tab === 'home' && <HomeScreen user={user} onRecharge={() => setTab('recharge')} onViewAll={() => setTab('first')} onEmergency={() => setTab('emergency')} />}
+      {tab === 'home' && <HomeScreen user={user} onRecharge={() => setTab('recharge')} onViewAll={() => setTab('first')} onEmergency={() => setTab('emergency')} onPhones={() => setShowPayment(true)} />}
       {tab === 'recharge' && <RechargeScreen user={user} onManagePuces={() => setShowPayment(true)} onUserUpdate={onUserUpdate} />}
       {tab === 'first' && <GiftCardsScreen />}
       {tab === 'emergency' && <EmergencyScreen onBack={() => setTab('home')} />}
