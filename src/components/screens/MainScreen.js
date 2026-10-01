@@ -5,6 +5,7 @@ import RechargeScreen from './RechargeScreen';
 import ShopScreen from './ShopScreen';
 import GiftCardsScreen from './GiftCardsScreen';
 import EmergencyScreen from './EmergencyScreen';
+import HistoryScreen from './HistoryScreen';
 import SettingsScreen from './SettingsScreen';
 import PaymentMethodsScreen from './PaymentMethodsScreen';
 import BottomNav from '../dashboard/BottomNav';
@@ -26,11 +27,23 @@ export default function MainScreen({ user, onLogout, onUserUpdate }) {
 
   return (
     <SafeAreaView style={[styles.dashRoot, { backgroundColor: colors.bg }]}>
-      {tab === 'home' && <HomeScreen user={user} onRecharge={() => setTab('recharge')} onViewAll={() => setTab('first')} onEmergency={() => setTab('emergency')} onPhones={() => setShowPayment(true)} />}
-      {tab === 'recharge' && <RechargeScreen user={user} onManagePuces={() => setShowPayment(true)} onUserUpdate={onUserUpdate} />}
+      {tab === 'home' && (
+        <HomeScreen
+          user={user}
+          onRecharge={() => setTab('recharge')}
+          onViewAll={() => setTab('first')}
+          onEmergency={() => setTab('emergency')}
+          onPayment={() => setShowPayment(true)}
+          onGiftCards={() => setTab('first')}
+          onShop={() => setTab('orders')}
+          onHistory={() => setTab('history')}
+        />
+      )}
+      {tab === 'recharge' && <RechargeScreen user={user} onBack={() => setTab('home')} onManagePuces={() => setShowPayment(true)} onUserUpdate={onUserUpdate} />}
       {tab === 'first' && <GiftCardsScreen />}
       {tab === 'emergency' && <EmergencyScreen onBack={() => setTab('home')} />}
       {tab === 'orders' && <ShopScreen />}
+      {tab === 'history' && <HistoryScreen onBack={() => setTab('home')} />}
       {tab === 'profile' && <SettingsScreen user={user} onLogout={onLogout} onOpenPayment={() => setShowPayment(true)} />}
 
       <BottomNav active={tab} onNavigate={setTab} />

@@ -1,6 +1,6 @@
-import DjezzyLogo from '../../assets/djezzy.svg';
-import MobilisLogo from '../../assets/mobilis.svg';
-import OoredooLogo from '../../assets/ooredoo.svg';
+import DjezzyLogo from '../../assets/logos/djezzy.svg';
+import MobilisLogo from '../../assets/logos/mobilis.svg';
+import OoredooLogo from '../../assets/logos/ooredoo.svg';
 
 export const OPERATORS = [
   { id: 'djezzy', name: 'Djezzy', color: '#E3282C', Logo: DjezzyLogo },

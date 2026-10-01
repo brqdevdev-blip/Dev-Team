@@ -3,14 +3,14 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
 
 const GIFT_CARDS = [
-  { name: 'Valo point Djezzy', amount: '500 DA', icon: 'game-controller-outline', image: require('../../../assets/valorant-gift-card-gbp-v2.webp') },
-  { name: 'Carte Google Play', amount: '1 000 DA', icon: 'logo-google', image: require('../../../assets/images.jpg') },
-  { name: 'Carte iTunes', amount: '2 000 DA', icon: 'musical-notes-outline', image: require('../../../assets/images (1).jpg') },
-  { name: 'Carte PUBG UC', amount: '1 500 DA', icon: 'game-controller-outline', image: require('../../../assets/images (2).jpg') },
-  { name: 'Carte Netflix', amount: '3 000 DA', icon: 'tv-outline', image: require('../../../assets/images (3).jpg') },
-  { name: 'Carte Spotify', amount: '2 500 DA', icon: 'musical-notes-outline', image: require('../../../assets/images (4).jpg') },
-  { name: 'Carte Amazon', amount: '4 000 DA', icon: 'cart-outline', image: require('../../../assets/images (5).jpg') },
-  { name: 'Carte Xbox', amount: '3 500 DA', icon: 'logo-xbox', image: require('../../../assets/images.png') },
+  { name: 'Valo point Djezzy', amount: '500 DA', icon: 'game-controller-outline', image: require('../../../assets/shop/valorant-gift-card-gbp-v2.webp') },
+  { name: 'Carte Google Play', amount: '1 000 DA', icon: 'logo-google', image: require('../../../assets/shop/images.jpg') },
+  { name: 'Carte iTunes', amount: '2 000 DA', icon: 'musical-notes-outline', image: require('../../../assets/shop/images (1).jpg') },
+  { name: 'Carte PUBG UC', amount: '1 500 DA', icon: 'game-controller-outline', image: require('../../../assets/shop/images (2).jpg') },
+  { name: 'Carte Netflix', amount: '3 000 DA', icon: 'tv-outline', image: require('../../../assets/shop/images (3).jpg') },
+  { name: 'Carte Spotify', amount: '2 500 DA', icon: 'musical-notes-outline', image: require('../../../assets/shop/images (4).jpg') },
+  { name: 'Carte Amazon', amount: '4 000 DA', icon: 'cart-outline', image: require('../../../assets/shop/images (5).jpg') },
+  { name: 'Carte Xbox', amount: '3 500 DA', icon: 'logo-xbox', image: require('../../../assets/shop/images.png') },
 ];
 
 export default function GiftCardsScreen() {

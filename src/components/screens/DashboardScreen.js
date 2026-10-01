@@ -11,9 +11,9 @@ export default function DashboardScreen({ user, onLogout }) {
   return (
     <SafeAreaView style={styles.dashRoot}>
       <DashboardHeader user={user} onLogout={onLogout} />
-
+<HeroCard user={user} />
       <ScrollView style={styles.dashScroll} contentContainerStyle={styles.dashScrollContent}>
-        <HeroCard user={user} />
+<HeroCard user={user} />
         <ServiceGrid />
         <PromoCard />
         <TransactionList />

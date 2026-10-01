@@ -5,9 +5,8 @@ import { useApp } from '../../context/AppContext';
 
 const ITEMS = [
   { key: 'home', icon: 'home', labelKey: 'navHome' },
-
+  { key: 'recharge', icon: 'cart', labelKey: 'navRecharge' },
   { key: 'first', icon: 'gift', labelKey: 'navGiftCards' },
-    { key: 'recharge', icon: 'call', labelKey: 'navRecharge' },
   { key: 'orders', icon: 'bag-handle', labelKey: 'navShop' },
   { key: 'profile', icon: 'settings', labelKey: 'navProfile' },
 ];
@@ -31,7 +30,7 @@ export default function BottomNav({ active = 'home', onNavigate }) {
             <Ionicons
               name={item.icon}
               size={22}
-              color={isActive ? colors.primary : colors.subtext}
+              color={isActive ? '#fff' : colors.subtext}
             />
             <Text style={[styles.glassNavLabel, { color: isActive ? '#fff' : colors.subtext }]}>
               {t(item.labelKey)}

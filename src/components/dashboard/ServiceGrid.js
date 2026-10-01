@@ -1,40 +1,33 @@
 import { View, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../../styles';
-import { useApp } from '../../context/AppContext';
 
-const SHORTCUTS = [
-  { icon: 'call-outline', labelKey: 'svcRecharge', color: '#3B82F6' },
-  { icon: 'phone-portrait-outline', labelKey: 'svcPhones', color: '#22C55E' },
-  { icon: 'swap-horizontal-outline', labelKey: 'svcAccessories', color: '#6366F1' },
-  { icon: 'alarm-outline', labelKey: 'svcEmergency', color: '#EF4444' },
+const SERVICES = [
+  { key: 'voucher', label: 'Voucher', icon: 'ticket', color: '#F5B301' },
+  { key: 'cartes', label: 'Cartes Recharges', icon: 'gift', color: '#E3282C' },
+  { key: 'iptv', label: 'IPTV', icon: 'tv', color: '#E3282C' },
+  { key: 'code', label: 'Code', icon: 'hash', color: '#1A72B6' },
+  { key: 'mobile', label: 'Mobile', icon: 'phone-portrait', color: '#1A72B6' },
+  { key: 'sim', label: 'Sim', icon: 'hardware-chip', color: '#1A72B6' },
+  { key: 'chargeur', label: 'Chargeur', icon: 'flash', color: '#F5B301' },
+  { key: 'plus', label: 'Plus', icon: 'apps', color: '#8B5CF6' },
 ];
 
 export default function ServiceGrid({ onSelect }) {
-  const { t, colors } = useApp();
   return (
-    <>
-      <Text style={[styles.sectionTitle, { color: colors.text }]}>{t('services')}</Text>
-      <View style={styles.svcRow}>
-        {SHORTCUTS.map((s) => (
-          <Pressable
-            key={s.labelKey}
-            onPress={() => onSelect && onSelect({ ...s, label: t(s.labelKey) })}
-            style={({ pressed }) => [styles.svcItem, pressed && styles.svcBtnPressed]}
-          >
-            <LinearGradient
-              colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.01)']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={[styles.svcCircle, { borderColor: `${s.color}55` }]}
-            >
-              <Ionicons name={s.icon} size={26} color={s.color} />
-            </LinearGradient>
-            <Text style={[styles.svcLabel, { color: colors.subtext }]}>{t(s.labelKey)}</Text>
-          </Pressable>
-        ))}
-      </View>
-    </>
+    <View style={styles.svcGridNew}>
+      {SERVICES.map((s) => (
+        <Pressable
+          key={s.key}
+          onPress={() => onSelect && onSelect(s)}
+          style={({ pressed }) => [styles.svcTile, pressed && { opacity: 0.6 }]}
+        >
+          <View style={styles.svcTileBox}>
+            <Ionicons name={s.icon} size={28} color={s.color} />
+          </View>
+          <Text style={styles.svcTileLabel} numberOfLines={2}>{s.label}</Text>
+        </Pressable>
+      ))}
+    </View>
   );
 }

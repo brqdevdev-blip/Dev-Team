@@ -10,14 +10,14 @@ const CATEGORIES = [
 ];
 
 const PRODUCTS = [
-  { id: '1', name: 'iPhone 15 Pro', price: 145000, category: 'phones', image: require('../../../assets/51z76AuUYlL._AC_UF1000,1000_QL80_.jpg'), color: '#1A72B6' },
-  { id: '2', name: 'Samsung Galaxy S24', price: 120000, category: 'phones', image: require('../../../assets/images.jpg'), color: '#00496A' },
-  { id: '3', name: 'Xiaomi Redmi Note 13', price: 45000, category: 'phones', image: require('../../../assets/images (1).jpg'), color: '#E3282C' },
-  { id: '4', name: 'Écouteurs sans fil', price: 8500, category: 'accessories', image: require('../../../assets/images (2).jpg'), color: '#31744C' },
-  { id: '5', name: 'Coque de protection', price: 1500, category: 'accessories', image: require('../../../assets/images (3).jpg'), color: '#BA1A1A' },
-  { id: '6', name: 'Chargeur rapide 65W', price: 3000, category: 'accessories', image: require('../../../assets/images (4).jpg'), color: '#E4A57B' },
-  { id: '7', name: 'Power bank 20000mAh', price: 6500, category: 'accessories', image: require('../../../assets/images (5).jpg'), color: '#003527' },
-  { id: '8', name: 'Montre connectée', price: 18000, category: 'accessories', image: require('../../../assets/Cat03.png'), color: '#1A72B6' },
+  { id: '1', name: 'iPhone 15 Pro', price: 145000, category: 'phones', image: require('../../../assets/shop/51z76AuUYlL._AC_UF1000,1000_QL80_.jpg'), color: '#1A72B6' },
+  { id: '2', name: 'Samsung Galaxy S24', price: 120000, category: 'phones', image: require('../../../assets/shop/images.jpg'), color: '#00496A' },
+  { id: '3', name: 'Xiaomi Redmi Note 13', price: 45000, category: 'phones', image: require('../../../assets/shop/images (1).jpg'), color: '#E3282C' },
+  { id: '4', name: 'Écouteurs sans fil', price: 8500, category: 'accessories', image: require('../../../assets/shop/images (2).jpg'), color: '#31744C' },
+  { id: '5', name: 'Coque de protection', price: 1500, category: 'accessories', image: require('../../../assets/shop/images (3).jpg'), color: '#BA1A1A' },
+  { id: '6', name: 'Chargeur rapide 65W', price: 3000, category: 'accessories', image: require('../../../assets/shop/images (4).jpg'), color: '#E4A57B' },
+  { id: '7', name: 'Power bank 20000mAh', price: 6500, category: 'accessories', image: require('../../../assets/shop/images (5).jpg'), color: '#003527' },
+  { id: '8', name: 'Montre connectée', price: 18000, category: 'accessories', image: require('../../../assets/shop/Cat03.png'), color: '#1A72B6' },
 ];
 
 function formatPrice(value) {
