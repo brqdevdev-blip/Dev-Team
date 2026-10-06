@@ -12,9 +12,6 @@ import { updateUserBalance, User } from '../../data/mockUsers';
 import { loadNumbers, NumbersMap } from '../../data/numbers';
 import { formatBalance } from '../../utils/format';
 import { useApp } from '../../context/AppContext';
-import DashboardHeader from '../dashboard/DashboardHeader';
-import { LinearGradient } from 'expo-linear-gradient';
-    
 
 type HistoryItem = { operator: string; number: string; amount: number; date: string };
 
@@ -55,7 +52,6 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
   const [selectedNumber, setSelectedNumber] = useState<string | null>(null);
   const [amount, setAmount] = useState('');
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [heroHeight, setHeroHeight] = useState(220);
 
   useEffect(() => {
     loadNumbers().then(setNumbers);
@@ -117,16 +113,31 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
 
   return (
     <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
-      <LinearGradient
-        colors={['#549DD4', '#0B4A8F'  ]}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styles.dashHero}
-        onLayout={(e) => setHeroHeight(e.nativeEvent.layout.height)}
-      >
-        <DashboardHeader user={user} />
-      </LinearGradient>
-      <View style={styles.rcSheet}>
+      <ScreenHeader title={t('rechargeHeader')} onBack={onBack} />
+
+      {/* Balance circle */}
+      <View style={styles.rcBalanceWrap}>
+        <Svg width={190} height={190} viewBox="0 0 190 190">
+          <Circle cx={95} cy={95} r={R} stroke="#E1E3E0" strokeWidth={12} fill="none" />
+          <Circle
+            cx={95}
+            cy={95}
+            r={R}
+            stroke="#1A72B6"
+            strokeWidth={12}
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray={`${CIRC * ratio} ${CIRC}`}
+            transform="rotate(-90 95 95)"
+          />
+        </Svg>
+        <View style={styles.rcBalanceCenter}>
+          <Text style={styles.rcBalanceLabel}>{t('solde')}</Text>
+          <Text style={styles.rcBalanceValue}>{formatBalance(balance)}</Text>
+          <Text style={styles.rcBalanceUnit}>da</Text>
+        </View>
+      </View>
+
       <Text style={styles.paySectionLabel}>{t('chooseOperator')}</Text>
       <OperatorPicker
         selectedId={operatorId}
@@ -193,7 +204,6 @@ export default function RechargeScreen({ user, onBack, onManagePuces, onUserUpda
           />
         ))
       )}
-      </View>
     </ScrollView>
   );
 }

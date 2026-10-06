@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { View, Text, Pressable, ScrollView, Alert } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, ScrollView, Alert } from 'react-native';
 import styles from '../../styles';
-import OperatorButton from '../ui/OperatorButton';
+import ScreenHeader from '../ui/ScreenHeader';
+import SettingsRow from '../ui/SettingsRow';
+import OperatorPicker from '../ui/OperatorPicker';
 import { OPERATORS } from '../../data/operators';
 import { useApp } from '../../context/AppContext';
 
@@ -67,24 +68,13 @@ export default function EmergencyScreen({ onBack }: { onBack: () => void }) {
 
   return (
     <View style={[styles.shopRoot, { backgroundColor: colors.bg }]}>
-      <View style={styles.dasheader}>
-        <Pressable onPress={onBack} style={styles.payBackBtn}>
-          <Ionicons name="arrow-back-outline" size={22} color={colors.primary} />
-        </Pressable>
-        <Text style={[styles.textpay, { color: colors.primary }]}>طوارئ</Text>
-      </View>
+      <ScreenHeader title={t('emergencyTitle')} onBack={onBack} />
 
       <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
-      <View style={styles.payOpRow}>
-          {OPERATORS.map((op) => (
-            <OperatorButton
-              key={op.id}
-              op={op}
-              selected={selectedOp === op.id}
-              onPress={() => setSelectedOp(selectedOp === op.id ? null : op.id)}
-            />
-          ))}
-        </View>
+        <OperatorPicker
+          selectedId={selectedOp}
+          onSelect={(id) => setSelectedOp(selectedOp === id ? null : id)}
+        />
 
         {!selectedOp ? (
           <Text style={[styles.payEmpty, { color: colors.muted }]}>
@@ -96,40 +86,28 @@ export default function EmergencyScreen({ onBack }: { onBack: () => void }) {
               {OPERATORS.find((o) => o.id === selectedOp)?.name}
             </Text>
             {codes.map((c) => (
-              <Pressable
+              <SettingsRow
                 key={`${c.code}-${c.desc}`}
+                icon="keypad-outline"
+                title={c.code}
+                sub={c.desc}
                 onPress={() => dialCode(c.code, c.desc)}
-                style={[styles.settingsRow, { backgroundColor: colors.card }]}
-              >
-                <View style={[styles.settingsRowIcon, { backgroundColor: colors.primarySoft }]}>
-                  <Ionicons name="keypad-outline" size={20} color={colors.primary} />
-                </View>
-                <View style={styles.settingsRowText}>
-                  <Text style={[styles.settingsRowTitle, { color: colors.text }]}>{c.code}</Text>
-                  <Text style={[styles.settingsRowSub, { color: colors.muted }]}>{c.desc}</Text>
-                </View>
-                <Ionicons name="call-outline" size={20} color={colors.primary} />
-              </Pressable>
+                chevron="call-outline"
+              />
             ))}
 
             {selectedOp === 'mobilis' && (
               <>
                 <Text style={[styles.sectionTitle, { color: colors.text }]}>Renvoi d'appels</Text>
                 {CALL_FORWARDING.map((c) => (
-                  <Pressable
+                  <SettingsRow
                     key={`${c.code}-${c.desc}`}
+                    icon="swap-horizontal-outline"
+                    title={c.code}
+                    sub={c.desc}
                     onPress={() => dialCode(c.code, c.desc)}
-                    style={[styles.settingsRow, { backgroundColor: colors.card }]}
-                  >
-                    <View style={[styles.settingsRowIcon, { backgroundColor: colors.primarySoft }]}>
-                      <Ionicons name="swap-horizontal-outline" size={20} color={colors.primary} />
-                    </View>
-                    <View style={styles.settingsRowText}>
-                      <Text style={[styles.settingsRowTitle, { color: colors.text }]}>{c.code}</Text>
-                      <Text style={[styles.settingsRowSub, { color: colors.muted }]}>{c.desc}</Text>
-                    </View>
-                    <Ionicons name="call-outline" size={20} color={colors.primary} />
-                  </Pressable>
+                    chevron="call-outline"
+                  />
                 ))}
               </>
             )}

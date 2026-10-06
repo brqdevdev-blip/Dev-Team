@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Alert } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
 
@@ -13,14 +13,15 @@ type Props = {
   onRecharge?: () => void;
   onHistory?: () => void;
   onContact?: () => void;
+  onEnvoie?: () => void;
 };
 
-export default function QuickActions({ onRecharge, onHistory, onContact }: Props) {
+export default function QuickActions({ onRecharge, onHistory, onContact, onEnvoie }: Props) {
   const handle = (key: string) => {
     if (key === 'recharge' && onRecharge) onRecharge();
     else if (key === 'historique' && onHistory) onHistory();
     else if (key === 'contact' && onContact) onContact();
-    else if (key === 'envoie') Alert.alert('Bientôt disponible', "L'envoi d'argent arrive bientôt.");
+    else if (key === 'envoie' && onEnvoie) onEnvoie();
   };
 
   return (

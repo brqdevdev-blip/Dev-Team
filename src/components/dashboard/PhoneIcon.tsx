@@ -9,6 +9,6 @@ type Props = {
   color?: string;
 };
 
-export default function PhoneIcon({ size = 28, color = '#1A72B6' }: Props) {
+export default function PhoneIcon({ size = 30, color = '#fff'  }: Props) {
   return <SvgXml xml={PHONE_SVG(color)} width={size} height={size} />;
 }

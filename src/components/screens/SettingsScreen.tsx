@@ -1,16 +1,17 @@
-import { View, Text, Pressable, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { ScrollView } from 'react-native';
 import styles from '../../styles';
 import ProfileCard from '../ui/ProfileCard';
+import SettingsRow from '../ui/SettingsRow';
 import { User } from '../../data/mockUsers';
+import { useApp } from '../../context/AppContext';
 
 const SETTINGS_ROWS = [
-  { icon: 'person-outline', title: 'Informations personnelles', sub: 'Nom, numéro, email' },
-  { icon: 'lock-closed-outline', title: 'Sécurité', sub: 'Mot de passe, PIN' },
-  { icon: 'notifications-outline', title: 'Notifications', sub: 'Alertes et SMS' },
-  { icon: 'card-outline', title: 'Moyens de paiement', sub: 'Cartes et comptes' },
-  { icon: 'help-circle-outline', title: 'Aide et support', sub: 'FAQ, contact' },
-  { icon: 'information-circle-outline', title: 'À propos', sub: 'Version de l’application' },
+  { icon: 'person-outline', titleKey: 'personalInfo', sub: 'Nom, numéro, email' },
+  { icon: 'lock-closed-outline', titleKey: 'security', sub: 'Mot de passe, PIN' },
+  { icon: 'notifications-outline', titleKey: 'notifications', sub: 'Alertes et SMS' },
+  { icon: 'card-outline', titleKey: 'paymentMethods', sub: 'Cartes et comptes' },
+  { icon: 'help-circle-outline', titleKey: 'help', sub: 'FAQ, contact' },
+  { icon: 'information-circle-outline', titleKey: 'about', sub: 'Version de l’application' },
 ] as const;
 
 type Props = {
@@ -21,8 +22,9 @@ type Props = {
 };
 
 export default function SettingsScreen({ user, onLogout, onBack, onOpenPayment }: Props) {
+  const { t } = useApp();
   const handleRowPress = (title: string) => {
-    if (title === 'Moyens de paiement' && onOpenPayment) {
+    if (title === t('paymentMethods') && onOpenPayment) {
       onOpenPayment();
     }
   };
@@ -32,26 +34,25 @@ export default function SettingsScreen({ user, onLogout, onBack, onOpenPayment }
       <ProfileCard user={user} />
 
       {SETTINGS_ROWS.map((row) => (
-        <Pressable key={row.title} onPress={() => handleRowPress(row.title)} style={styles.settingsRow}>
-          <View style={styles.settingsRowIcon}>
-            <Ionicons name={row.icon} size={20} color="#1A72B6" />
-          </View>
-          <View style={styles.settingsRowText}>
-            <Text style={styles.settingsRowTitle}>{row.title}</Text>
-            <Text style={styles.settingsRowSub}>{row.sub}</Text>
-          </View>
-          <Ionicons name="chevron-forward-outline" size={18} color="#9AA3AE" />
-        </Pressable>
+        <SettingsRow
+          key={row.titleKey}
+          icon={row.icon}
+          title={t(row.titleKey)}
+          sub={row.sub}
+          onPress={() => handleRowPress(t(row.titleKey))}
+          chevron="chevron-forward-outline"
+        />
       ))}
 
-      <Pressable onPress={onLogout} style={styles.settingsRow}>
-        <View style={[styles.settingsRowIcon, { backgroundColor: '#FDE8E8' }]}>
-          <Ionicons name="log-out-outline" size={20} color="#E3282C" />
-        </View>
-        <View style={styles.settingsRowText}>
-          <Text style={[styles.settingsRowTitle, { color: '#E3282C' }]}>Se déconnecter</Text>
-        </View>
-      </Pressable>
+      <SettingsRow
+        icon="log-out-outline"
+        title={t('logout')}
+        sub=""
+        onPress={onLogout}
+        iconColor="#E3282C"
+        iconBg="#FDE8E8"
+        titleColor="#E3282C"
+      />
     </ScrollView>
   );
 }

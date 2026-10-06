@@ -8,6 +8,7 @@ import EmergencyScreen from './EmergencyScreen';
 import HistoryScreen from './HistoryScreen';
 import SettingsScreen from './SettingsScreen';
 import PaymentMethodsScreen from './PaymentMethodsScreen';
+import CallScreen from './CallScreen';
 import BottomNav from '../dashboard/BottomNav';
 import styles from '../../styles';
 import { useApp } from '../../context/AppContext';
@@ -23,6 +24,22 @@ export default function MainScreen({ user, onLogout, onUserUpdate }: Props) {
   const { colors } = useApp();
   const [tab, setTab] = useState('home');
   const [showPayment, setShowPayment] = useState(false);
+  const [showCall, setShowCall] = useState(false);
+
+  if (showCall) {
+    return (
+      <SafeAreaView style={[styles.dashRoot, { backgroundColor: colors.bg }]}>
+        <CallScreen user={user} onBack={() => setShowCall(false)} onUserUpdate={onUserUpdate} />
+        <BottomNav
+          active={tab}
+          onNavigate={(key) => {
+            setShowCall(false);
+            setTab(key);
+          }}
+        />
+      </SafeAreaView>
+    );
+  }
 
   if (showPayment) {
     return (
@@ -44,6 +61,7 @@ export default function MainScreen({ user, onLogout, onUserUpdate }: Props) {
           onGiftCards={() => setTab('first')}
           onShop={() => setTab('orders')}
           onHistory={() => setTab('history')}
+          onEnvoie={() => setShowCall(true)}
         />
       )}
       {tab === 'recharge' && <RechargeScreen user={user} onBack={() => setTab('home')} onManagePuces={() => setShowPayment(true)} onUserUpdate={onUserUpdate} />}

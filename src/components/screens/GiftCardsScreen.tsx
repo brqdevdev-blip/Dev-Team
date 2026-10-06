@@ -1,6 +1,8 @@
 import { View, Text, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
+import ScreenHeader from '../ui/ScreenHeader';
+import { useApp } from '../../context/AppContext';
 import valorantImg from '../../../assets/shop/valorant-gift-card-gbp-v2.webp';
 import googlePlayImg from '../../../assets/shop/images.jpg';
 import itunesImg from '../../../assets/shop/images (1).jpg';
@@ -22,11 +24,10 @@ const GIFT_CARDS = [
 ] as const;
 
 export default function GiftCardsScreen() {
+  const { t } = useApp();
   return (
     <View style={styles.shopRoot}>
-      <View style={styles.dasheader}>
-        <Text style={styles.textpay}>Cartes cadeaux</Text>
-      </View>
+      <ScreenHeader title={t('giftCards')} />
       <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
         <View style={styles.gpGrid}>
           {GIFT_CARDS.map((g) => (

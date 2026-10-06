@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { View, Text, Pressable, ScrollView, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from '../../styles';
+import { formatBalance } from '../../utils/format';
+import { useApp } from '../../context/AppContext';
 import iphoneImg from '../../../assets/shop/51z76AuUYlL._AC_UF1000,1000_QL80_.jpg';
 import galaxyImg from '../../../assets/shop/images.jpg';
 import redmiImg from '../../../assets/shop/images (1).jpg';
@@ -42,13 +44,8 @@ const PRODUCTS: Product[] = [
   { id: '8', name: 'Montre connectée', price: 18000, category: 'accessories', image: montreImg, color: '#1A72B6' },
 ];
 
-function formatPrice(value: number | string): string {
-  return Math.round(Number(value) || 0)
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-}
-
 export default function ShopScreen() {
+  const { t } = useApp();
   const [category, setCategory] = useState('all');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
@@ -86,7 +83,7 @@ export default function ShopScreen() {
     if (cart.length === 0) return;
     Alert.alert(
       'Confirmation',
-      `Commander ${cartCount} article(s) pour ${formatPrice(cartTotal)} da ?`,
+      `Commander ${cartCount} article(s) pour ${formatBalance(cartTotal)} da ?`,
       [
         { text: 'Annuler', style: 'cancel' },
         {
@@ -104,7 +101,7 @@ export default function ShopScreen() {
   return (
     <View style={styles.shopRoot}>
       <View style={styles.dasheader}>
-        <Text style={styles.textpay}>Boutique</Text>
+        <Text style={styles.textpay}>{t('shopHeader')}</Text>
         <Pressable onPress={() => setShowCart(true)} style={styles.shopCartBtn}>
           <Ionicons name="cart-outline" size={24} color="#1A72B6" />
           {cartCount > 0 && (
@@ -118,14 +115,14 @@ export default function ShopScreen() {
       {showCart ? (
         <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
           <View style={styles.shopCartHeader}>
-            <Text style={styles.sectionTitle}>Mon panier</Text>
+            <Text style={styles.sectionTitle}>{t('cart')}</Text>
             <Pressable onPress={() => setShowCart(false)}>
-              <Text style={styles.shopBackLink}>← Continuer mes achats</Text>
+              <Text style={styles.shopBackLink}>{t('continueShopping')}</Text>
             </Pressable>
           </View>
 
           {cart.length === 0 ? (
-            <Text style={styles.payEmpty}>Votre panier est vide</Text>
+            <Text style={styles.payEmpty}>{t('emptyCart')}</Text>
           ) : (
             <>
               {cart.map((item) => (
@@ -135,7 +132,7 @@ export default function ShopScreen() {
                   </View>
                   <View style={styles.shopCartInfo}>
                     <Text style={styles.txTitle}>{item.product.name}</Text>
-                    <Text style={styles.txDetail}>{formatPrice(item.product.price)} da</Text>
+                    <Text style={styles.txDetail}>{formatBalance(item.product.price)} da</Text>
                   </View>
                   <View style={styles.shopQtyWrap}>
                     <Pressable onPress={() => changeQty(item.product.id, -1)} style={styles.shopQtyBtn}>
@@ -153,12 +150,12 @@ export default function ShopScreen() {
               ))}
 
               <View style={styles.shopTotalRow}>
-                <Text style={styles.shopTotalLabel}>Total</Text>
-                <Text style={styles.shopTotalValue}>{formatPrice(cartTotal)} da</Text>
+                <Text style={styles.shopTotalLabel}>{t('total')}</Text>
+                <Text style={styles.shopTotalValue}>{formatBalance(cartTotal)} da</Text>
               </View>
 
               <Pressable onPress={checkout} style={styles.rcConfirmBtn}>
-                <Text style={styles.rcConfirmText}>Commander ({cartCount})</Text>
+                <Text style={styles.rcConfirmText}>{t('order')} ({cartCount})</Text>
               </Pressable>
             </>
           )}
@@ -188,10 +185,10 @@ export default function ShopScreen() {
                   </View>
                   <View style={styles.shopCardBody}>
                     <Text style={styles.shopCardName} numberOfLines={1}>{p.name}</Text>
-                    <Text style={styles.shopCardPrice}>{formatPrice(p.price)} da</Text>
+                    <Text style={styles.shopCardPrice}>{formatBalance(p.price)} da</Text>
                     <Pressable onPress={() => addToCart(p)} style={styles.shopCardAddBtn}>
                       <Ionicons name="add" size={16} color="#fff" />
-                      <Text style={styles.shopCardAddText}>Ajouter</Text>
+                      <Text style={styles.shopCardAddText}>{t('add')}</Text>
                     </Pressable>
                   </View>
                 </View>
@@ -205,7 +202,7 @@ export default function ShopScreen() {
                 <Ionicons name="cart-outline" size={20} color="#fff" />
                 <Text style={styles.shopBarCount}>{cartCount} article(s)</Text>
               </View>
-              <Text style={styles.shopBarTotal}>{formatPrice(cartTotal)} da</Text>
+              <Text style={styles.shopBarTotal}>{formatBalance(cartTotal)} da</Text>
             </Pressable>
           )}
         </>

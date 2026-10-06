@@ -1,36 +1,19 @@
 import { useState, useEffect } from 'react';
 import { View, Text, Pressable, ScrollView, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../../styles';
 import ProfileCard from '../ui/ProfileCard';
-import OperatorButton from '../ui/OperatorButton';
-import BottomNav from '../dashboard/BottomNav';
+import ScreenHeader from '../ui/ScreenHeader';
+import OperatorPicker from '../ui/OperatorPicker';
 import { OPERATORS } from '../../data/operators';
 import { User } from '../../data/mockUsers';
-
-const STORAGE_KEY = 'savedNumbers';
-
-type NumbersMap = Record<string, string[]>;
-
-async function loadNumbers(): Promise<NumbersMap> {
-  try {
-    const raw = await AsyncStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : {};
-  } catch {
-    return {};
-  }
-}
-
-async function saveNumbers(numbers: NumbersMap) {
-  try {
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(numbers));
-  } catch {}
-}
+import { loadNumbers, saveNumbers, NumbersMap } from '../../data/numbers';
+import { useApp } from '../../context/AppContext';
 
 // Pressable operator card: drop shadow when idle, inner shadow when pressed.
 
 export default function PayementMethodsScreen({ user, onBack }: { user: User; onBack: () => void }) {
+  const { t } = useApp();
   const [operatorId, setOperatorId] = useState<string | null>(null);
   const [numbers, setNumbers] = useState<NumbersMap>({});
   const [editingIndex, setEditingIndex] = useState<string | number | null>(null); // null = list, 'new' = adding, number = editing
@@ -91,29 +74,15 @@ export default function PayementMethodsScreen({ user, onBack }: { user: User; on
 
   return (
     <ScrollView style={styles.screenScroll} contentContainerStyle={styles.payContent}>
-      <View style={styles.dasheader}>
-        <Pressable onPress={onBack} style={styles.payBackBtn}>
-          <Ionicons name="arrow-back-outline" size={22} color="#1A72B6" />
-        </Pressable>
-        <Text style={styles.textpay}>الخدمات</Text>
-      </View>
+      <ScreenHeader title={t('servicesHeader')} onBack={onBack} />
       <ProfileCard user={user} />
 
-      <Text style={styles.paySectionLabel}>Choisissez un opérateur</Text>
-      <View style={styles.payOpRow}>
-        {OPERATORS.map((op) => (
-          <OperatorButton
-            key={op.id}
-            op={op}
-            selected={operatorId === op.id}
-            onPress={() => setOperatorId(op.id)}
-          />
-        ))}
-      </View>
+      <Text style={styles.paySectionLabel}>{t('chooseOperator')}</Text>
+      <OperatorPicker selectedId={operatorId} onSelect={setOperatorId} />
 
       {operator && (
         <>
-          <Text style={styles.paySectionLabel}>Mes numéros {operator.name}</Text>
+          <Text style={styles.paySectionLabel}>{t('myNumbers')} {operator.name}</Text>
 
           {editingIndex !== null ? (
             // ---- Inline add / edit form ----
@@ -127,17 +96,17 @@ export default function PayementMethodsScreen({ user, onBack }: { user: User; on
                 placeholderTextColor="#999"
               />
               <Pressable onPress={saveNumber} style={styles.payFormSave}>
-                <Text style={styles.payFormSaveText}>Enregistrer</Text>
+                <Text style={styles.payFormSaveText}>{t('save')}</Text>
               </Pressable>
               <Pressable onPress={cancelEdit} style={styles.payFormCancel}>
-                <Text style={styles.payFormCancelText}>Annuler</Text>
+                <Text style={styles.payFormCancelText}>{t('cancel')}</Text>
               </Pressable>
             </>
           ) : (
             // ---- Numbers list ----
             <>
               {list.length === 0 ? (
-                <Text style={styles.payEmpty}>Aucun numéro enregistré{'\n'}Appuyez sur "Ajouter" ci-dessous</Text>
+                <Text style={styles.payEmpty}>{t('noNumbers')}</Text>
               ) : (
                 list.map((num, index) => (
                   <View key={`${num}-${index}`} style={styles.payNumRow}>
@@ -157,7 +126,7 @@ export default function PayementMethodsScreen({ user, onBack }: { user: User; on
 
               <Pressable onPress={startAdd} style={styles.payAddNumBtn}>
                 <Ionicons name="add-outline" size={20} color="#fff" />
-                <Text style={styles.payAddText}>Ajouter un numéro</Text>
+                <Text style={styles.payAddText}>{t('addNumber')}</Text>
               </Pressable>
             </>
           )}

@@ -18,6 +18,7 @@ type Props = {
   onGiftCards: () => void;
   onShop: () => void;
   onHistory: () => void;
+  onEnvoie: () => void;
 };
 
 export default function HomeScreen({
@@ -29,6 +30,7 @@ export default function HomeScreen({
   onGiftCards,
   onShop,
   onHistory,
+  onEnvoie,
 }: Props) {
   const [heroHeight, setHeroHeight] = useState(220);
 
@@ -45,9 +47,9 @@ export default function HomeScreen({
   return (
     <>
     <LinearGradient
-      colors={[ '#1A72B6' , '#0B4A8F']}
-      start={{ x: 0, y: 2 }}
-      end={{ x: 5, y: 0 }}
+      colors={['#549DD4', '#0B4A8F'  ]}
+      start={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 1 }}
       style={styles.dashHero}
       onLayout={(e) => setHeroHeight(e.nativeEvent.layout.height)}
     >
@@ -61,10 +63,10 @@ export default function HomeScreen({
         <Text style={styles.svcSectionTitle}>Services</Text>
         <ServiceGrid onSelect={handleService} />
         <PromoCard onViewAll={onViewAll} />
-        <TransactionList />
+
       </ScrollView>
       <View style={[styles.quickFloat, { top: heroHeight + 8 }]}>
-        <QuickActions onRecharge={onRecharge} onHistory={onHistory} onContact={onEmergency} />
+        <QuickActions onRecharge={onRecharge} onHistory={onHistory} onContact={onEmergency} onEnvoie={onEnvoie} />
       </View>
     </>
   );
