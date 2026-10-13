@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Logo from '../ui/Logo';
+import LogoLight from '../ui/LogoLight';
 import styles from '../../styles';
 import { formatBalance } from '../../utils/format';
 import { User } from '../../data/mockUsers';
@@ -10,13 +10,13 @@ export default function DashboardHeader({ user }: { user: User }) {
   <>
       <View style={styles.dashHeroTop}>
         <View style={styles.dashBrand}>
-          <Logo width={30} height={26} />
+          <LogoLight width={30} height={26} />
           <Text style={styles.dashBrandName}>
             Recharge <Text style={styles.dashBrandLight}>Express</Text>
           </Text>
         </View>
         <View style={styles.dashHeroAvatar}>
-          <Logo width={34} height={34} />
+          <LogoLight width={34} height={34} />
         </View>
       </View>
       <View style={styles.dshSheetContent}>

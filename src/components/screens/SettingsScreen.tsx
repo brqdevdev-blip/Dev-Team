@@ -58,7 +58,7 @@ export default function SettingsScreen({ user, onLogout, onUserUpdate, onOpenPay
   };
 
   return (
-    <ScrollView style={styles.screenScroll} contentContainerStyle={styles.container}>
+    <ScrollView style={styles.screenScroll} contentContainerStyle={styles.screenScrollContent}>
       <ProfileCard user={user} />
 
       {SETTINGS_ROWS.map((row) => (
